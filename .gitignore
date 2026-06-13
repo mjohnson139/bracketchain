@@ -1,1 +1,9 @@
 NOTES/
+node_modules/
+site/
+app/public/state/
+app/public/sql-wasm.wasm
+tests/fixtures/demo-keys.json
+.DS_Store
+state/game.sqlite
+state/roots.json

@@ -1,0 +1,20 @@
+name: score
+
+# Scheduled rebuild. Once results land in the ledger, standings are a pure
+# function of (results, revealed picks), so "scoring" is just rebuilding and
+# republishing the state. Runs daily and on demand by reusing the deploy
+# pipeline (which audits the ledger and rebuilds state deterministically).
+on:
+  schedule:
+    # 06:00 UTC daily.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  rescore-and-deploy:
+    uses: ./.github/workflows/build-and-deploy.yml

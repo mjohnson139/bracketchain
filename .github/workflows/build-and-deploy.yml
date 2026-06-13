@@ -1,0 +1,59 @@
+name: build-and-deploy
+
+# Every deploy runs the full ledger audit first: a deploy MUST fail if the
+# ledger fails verification. State (sqlite + merkle roots) is rebuilt
+# deterministically from the ledger and published with the site.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deploy; let in-progress runs finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Audit ledger (deploy gate)
+        run: npm run verify:ledger
+
+      - name: Build deterministic state from ledger
+        run: npm run build:state
+
+      - name: Build site
+        run: npm run build:app
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

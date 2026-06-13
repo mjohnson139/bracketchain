@@ -1,0 +1,43 @@
+name: validate
+
+# Gates writes. Any pull request that adds or changes ledger records must pass
+# the full audit (signatures, schema, deadlines, commitment↔reveal hashes) plus
+# the unit suite before it can be merged. This never deploys.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Unit tests (crypto, merkle, scoring, determinism)
+        run: npm test
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Audit ledger (signatures, schema, deadlines)
+        run: npm run verify:ledger
+
+      - name: Determinism check (state build is byte-stable)
+        run: |
+          npm run build:state -- ledger /tmp/state-a
+          npm run build:state -- ledger /tmp/state-b
+          if ! cmp -s /tmp/state-a/game.sqlite /tmp/state-b/game.sqlite; then
+            echo "Non-deterministic state build: sqlite differs between runs" >&2
+            exit 1
+          fi
+          echo "State build is byte-identical across runs."

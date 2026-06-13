@@ -5,6 +5,7 @@
  */
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
+import { compareStrings } from "../app/src/lib/encoding.ts";
 import type {
   PickRecord,
   Registration,
@@ -37,7 +38,7 @@ export function loadLedger(ledgerDir: string): LoadedLedger {
   const registrations = listJson(playersDir)
     .map((f) => readJson<Registration>(join(playersDir, f)))
     // Sorted for deterministic downstream processing.
-    .sort((a, b) => a.login.localeCompare(b.login));
+    .sort((a, b) => compareStrings(a.login, b.login));
 
   const picksDir = join(ledgerDir, "picks");
   const picks: PickRecord[] = [];
@@ -49,12 +50,12 @@ export function loadLedger(ledgerDir: string): LoadedLedger {
       }
     }
   }
-  picks.sort((a, b) => a.round.localeCompare(b.round) || a.login.localeCompare(b.login));
+  picks.sort((a, b) => compareStrings(a.round, b.round) || compareStrings(a.login, b.login));
 
   const resultsDir = join(ledgerDir, "results");
   const results = listJson(resultsDir)
     .map((f) => readJson<ResultRecord>(join(resultsDir, f)))
-    .sort((a, b) => a.round.localeCompare(b.round));
+    .sort((a, b) => compareStrings(a.round, b.round));
 
   return { tournament, registrations, picks, results };
 }

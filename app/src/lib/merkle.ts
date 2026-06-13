@@ -32,14 +32,28 @@ export interface InclusionProof {
   root: string;
 }
 
+// Domain-separation tags (RFC 6962 style). Tagging leaves and internal nodes
+// differently means an internal node hash can never be presented as a leaf, so
+// an inclusion proof cannot be forged by passing off an interior node as a
+// player's leaf. The 0x1f unit separator between pubkey and commitment removes
+// any ambiguity about where one field ends and the next begins.
+const LEAF_TAG = new Uint8Array([0x00]);
+const NODE_TAG = new Uint8Array([0x01]);
+const FIELD_SEP = new Uint8Array([0x1f]);
+
 /** Compute the canonical leaf hash for a (pubkey, commitment) pair. */
 export async function leafHash(pubkey: string, commitment: string): Promise<string> {
-  const data = concatBytes(utf8ToBytes(pubkey), utf8ToBytes(commitment));
+  const data = concatBytes(
+    LEAF_TAG,
+    utf8ToBytes(pubkey),
+    FIELD_SEP,
+    utf8ToBytes(commitment),
+  );
   return sha256Hex(data);
 }
 
 async function hashPair(leftHex: string, rightHex: string): Promise<string> {
-  const combined = concatBytes(hexToBytes(leftHex), hexToBytes(rightHex));
+  const combined = concatBytes(NODE_TAG, hexToBytes(leftHex), hexToBytes(rightHex));
   return bytesToHex(await sha256Bytes(combined));
 }
 

@@ -50,6 +50,16 @@ export function base64urlToBytes(b64url: string): Uint8Array {
   return new Uint8Array(Buffer.from(padded, "base64"));
 }
 
+/**
+ * Stable codepoint string comparison. We deliberately avoid String.localeCompare
+ * for any ordering that feeds a build artifact, because it is ICU/locale
+ * sensitive and could differ between CI runners — silently breaking the
+ * "byte-identical state" guarantee.
+ */
+export function compareStrings(a: string, b: string): number {
+  return a < b ? -1 : a > b ? 1 : 0;
+}
+
 export function concatBytes(...arrays: Uint8Array[]): Uint8Array {
   const total = arrays.reduce((n, a) => n + a.length, 0);
   const out = new Uint8Array(total);

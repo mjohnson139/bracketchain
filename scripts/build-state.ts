@@ -15,6 +15,7 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import Database from "better-sqlite3";
 import { canonicalize } from "../app/src/lib/canonical.ts";
+import { compareStrings } from "../app/src/lib/encoding.ts";
 import { computeRoot, leafHash, sortLeaves } from "../app/src/lib/merkle.ts";
 import { computeScores, type RevealedPick } from "../app/src/lib/scoring.ts";
 import type { PublishedRoots } from "../app/src/lib/types.ts";
@@ -44,7 +45,7 @@ export async function buildState(ledgerDir: string, outDir: string): Promise<voi
   for (const round of ledger.tournament.rounds) {
     const roundPicks = ledger.picks
       .filter((p) => p.round === round.id)
-      .sort((a, b) => a.login.localeCompare(b.login));
+      .sort((a, b) => compareStrings(a.login, b.login));
     const leaves: string[] = [];
     for (const p of roundPicks) leaves.push(await leafHash(p.publicKey, p.commitment));
     const sorted = sortLeaves(leaves);
