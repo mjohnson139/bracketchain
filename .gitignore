@@ -7,3 +7,5 @@ tests/fixtures/demo-keys.json
 .DS_Store
 state/game.sqlite
 state/roots.json
+test-results/
+playwright-report/
