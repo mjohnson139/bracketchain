@@ -1,0 +1,37 @@
+{
+  "name": "bracketchain",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Trustless World Cup bracket pool on GitHub Pages — the git repo is the backend.",
+  "scripts": {
+    "dev": "vite",
+    "build:app": "vite build",
+    "preview": "vite preview",
+    "build:state": "tsx scripts/build-state.ts",
+    "verify:ledger": "tsx scripts/verify-ledger.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sql.js": "^1.12.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/sql.js": "^1.4.9",
+    "@vitejs/plugin-react": "^4.3.4",
+    "better-sqlite3": "^11.7.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  }
+}
