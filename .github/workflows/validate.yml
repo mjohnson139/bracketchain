@@ -1,16 +1,23 @@
 name: validate
 
-# Gates writes and proves the build. Runs on pull requests and on pushes to any
-# branch. Any change that adds or alters ledger records must pass the full audit
-# (signatures, schema, deadlines, commitment↔reveal hashes), the unit suite, the
-# determinism check, and the browser end-to-end flow. This never deploys.
+# Gates writes and proves the build. Runs on pull requests (the merge gate) and
+# on pushes to main (a record on the protected branch). Any change that adds or
+# alters ledger records must pass the full audit (signatures, schema, deadlines,
+# commitment↔reveal hashes), the unit suite, the determinism check, and the
+# browser end-to-end flow. This never deploys.
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
+
+# One validation per ref; a newer push cancels an in-flight run.
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   checks:
