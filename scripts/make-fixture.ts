@@ -42,12 +42,28 @@ const tournament: Tournament = {
       name: "Round of 16",
       deadline: "2026-06-05T16:00:00Z",
       matchIds: ["m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8"],
+      matchTeams: {
+        m1: ["BRA", "MEX"],
+        m2: ["ARG", "AUS"],
+        m3: ["FRA", "CRO"],
+        m4: ["ENG", "SEN"],
+        m5: ["ESP", "MAR"],
+        m6: ["GER", "JPN"],
+        m7: ["NED", "USA"],
+        m8: ["POR", "URU"],
+      },
     },
     {
       id: "qf",
       name: "Quarter-finals",
       deadline: "2026-06-10T16:00:00Z",
       matchIds: ["q1", "q2", "q3", "q4"],
+      matchTeams: {
+        q1: ["BRA", "ARG"],
+        q2: ["FRA", "GER"],
+        q3: ["ESP", "POR"],
+        q4: ["NED", "BEL"],
+      },
     },
   ],
 };

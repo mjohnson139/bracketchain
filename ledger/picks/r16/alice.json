@@ -2,10 +2,10 @@
   "type": "pick",
   "round": "r16",
   "login": "alice",
-  "publicKey": "BJMaYCJ9n235jJrUhXsB9cHdwvmt5RrCf-XXBSJGqF3RYuxHR4vOy4qlKuZW7yiDZ4NMtX_u3R1eJlKksho8_XM",
-  "commitment": "711aeaf8a6ef65d4bf7812711a8bdc41dae95f71851ff27688c505d808a74fea",
+  "publicKey": "BGWrEn4Eh_yGiWjui2c844DrSfdUQLHinwJ_05IsYtSO_eulmjnUL3JUkDfQ6JP273rfF-2a-0i8iwzaZ4jHJY8",
+  "commitment": "56b8ca2ce1a23ba5e63c34a52d052d506e4c4c6c67b489064c61c79545d7b5e1",
   "commitTime": "2026-06-05T10:00:00Z",
-  "commitSignature": "ielvzCC7Ts6Ri9eCCKDV7gB3sHJsojDA14Dqvvwh3WwuwT3WNhmEtYFAcH5HO77GpJGSe3xd8SfaUGsld6nqrA",
+  "commitSignature": "MV_d_ROXwLkcIYgp3qxdt5mJGU1VrhxHJZ8Ex7ijySsoftXXCD9Az_feJxXu4T9oMpNKoL4bs02Y-RSYnfRFNQ",
   "reveal": {
     "pick": {
       "round": "r16",
@@ -20,8 +20,8 @@
         "m8": "URU"
       }
     },
-    "salt": "DrS1B1on_4tDpU3yOhKbkU6Koe9G_xY_NKGZuCpgkVM",
+    "salt": "-PpS9GMxwmLsExGJZMUn4OzmE02_XDxAiylKungzjpA",
     "revealTime": "2026-06-06T10:00:00Z",
-    "signature": "EyFaVxjHWyF28ApPtuPv2-0-zw9PWCesp8wJw_bN15D-AZQVNgzvlG63RaIxCeTZdJ3uK2YQQKaFfx3UGG4dLw"
+    "signature": "o_mzASHzoqDiQ9IY9Lepap4Id165UXIIGi67u4SLD-Mf-cfVKo5tzf3w4vPm84o4iIoTY9H4vT1i8TCd6ENLkA"
   }
 }

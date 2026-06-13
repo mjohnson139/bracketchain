@@ -66,6 +66,8 @@ export interface RoundConfig {
   deadline: string;
   /** match ids that belong to this round. */
   matchIds: string[];
+  /** optional two-team lineup per match id, for the picking UI. */
+  matchTeams?: Record<string, [string, string]>;
 }
 
 /** ledger/tournament.json */

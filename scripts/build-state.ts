@@ -78,7 +78,7 @@ export async function buildState(ledgerDir: string, outDir: string): Promise<voi
   db.exec(`
     CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL) WITHOUT ROWID;
     CREATE TABLE rounds (id TEXT PRIMARY KEY, name TEXT, deadline TEXT, ordinal INTEGER) WITHOUT ROWID;
-    CREATE TABLE matches (round TEXT, match_id TEXT, PRIMARY KEY (round, match_id)) WITHOUT ROWID;
+    CREATE TABLE matches (round TEXT, match_id TEXT, team_a TEXT, team_b TEXT, PRIMARY KEY (round, match_id)) WITHOUT ROWID;
     CREATE TABLE players (login TEXT PRIMARY KEY, public_key TEXT, created_at TEXT) WITHOUT ROWID;
     CREATE TABLE picks (
       round TEXT, login TEXT, commitment TEXT, commit_time TEXT,
@@ -105,10 +105,15 @@ export async function buildState(ledgerDir: string, outDir: string): Promise<voi
     const insRound = db.prepare(
       "INSERT INTO rounds (id, name, deadline, ordinal) VALUES (?, ?, ?, ?)",
     );
-    const insMatch = db.prepare("INSERT INTO matches (round, match_id) VALUES (?, ?)");
+    const insMatch = db.prepare(
+      "INSERT INTO matches (round, match_id, team_a, team_b) VALUES (?, ?, ?, ?)",
+    );
     ledger.tournament.rounds.forEach((r, i) => {
       insRound.run(r.id, r.name, r.deadline, i);
-      for (const m of [...r.matchIds].sort()) insMatch.run(r.id, m);
+      for (const m of [...r.matchIds].sort()) {
+        const teams = r.matchTeams?.[m];
+        insMatch.run(r.id, m, teams?.[0] ?? null, teams?.[1] ?? null);
+      }
     });
 
     const insPlayer = db.prepare(

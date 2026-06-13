@@ -2,10 +2,10 @@
   "type": "pick",
   "round": "r16",
   "login": "bob",
-  "publicKey": "BGQjosgy-_qJJMffCbHqvhqn63JZR04j8AeElZ5hzw_YxrQX1HM_khYxKbahRYrZzvidlKDhMlKT6M7RZTgN3po",
-  "commitment": "a9832757fa3188f698bfa76ad7f9f1d793cadb691167b30a9f03369ccd6c677e",
+  "publicKey": "BK7aT-CDzSr0NO1ne5sqGwOtgwbaFO2G5CUxUbUIw-uJZcXVcjO72_-9Yvvc2SKTwtS6JJAUPO316H2gh2mJAQ4",
+  "commitment": "fbb32c72018ff83fa5759723f61e3f67a5ac4e38524257673a27e3cb6e60dc78",
   "commitTime": "2026-06-05T10:00:00Z",
-  "commitSignature": "Mo8hK-Gu43l_Or-JqB9vhWIMrvJ1g10j9zEFMcyxn8xMpFXRifAku_qFpbERhvZxeHT_7rCpZtaG9jrCpAw9nQ",
+  "commitSignature": "MlWu8GmGqK3npOUAWqkS2tpp7EsapdL3fwPLpgkV93G4V2iBH6-jmzDA0S9Vvnzjof1GVp71W50FfDRj1pcOlA",
   "reveal": {
     "pick": {
       "round": "r16",
@@ -20,8 +20,8 @@
         "m8": "POR"
       }
     },
-    "salt": "EdcnBzEEBjV2QSthdlnJ3eJ3LmCFBxjUxdXUmEYXKTY",
+    "salt": "Aa9-buDfO4qeQBd1ppvc4WfbkBrEvO_2pgzEjFt-MZo",
     "revealTime": "2026-06-06T10:00:00Z",
-    "signature": "lplXuxltykBHV5llOLBEdYP3DITTHjH4RwZUpVN6KxZlqNABIwWuHVUBehA49l47-Q7tLRzlbL37jPFPogMsBg"
+    "signature": "oUAX_sL4AeBjF-i3lrEZWbv8RXZ5_r8FA2_zXD2W3AftMOp36K02ozbNhwhj2bo9gV8S8LTw2HUqjjTdLs5Gag"
   }
 }

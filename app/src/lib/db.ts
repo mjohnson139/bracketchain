@@ -84,11 +84,11 @@ export const queries = {
     ),
   rounds: (db: Database) => rows<RoundRow>(db, "SELECT * FROM rounds ORDER BY ordinal ASC"),
   matches: (db: Database, round: string) =>
-    rows<{ match_id: string }>(
+    rows<{ match_id: string; team_a: string | null; team_b: string | null }>(
       db,
-      "SELECT match_id FROM matches WHERE round = ? ORDER BY match_id ASC",
+      "SELECT match_id, team_a, team_b FROM matches WHERE round = ? ORDER BY match_id ASC",
       [round],
-    ).map((r) => r.match_id),
+    ),
   picks: (db: Database, round: string) =>
     rows<PickRow>(db, "SELECT * FROM picks WHERE round = ? ORDER BY login ASC", [round]),
   pickFor: (db: Database, round: string, login: string) =>

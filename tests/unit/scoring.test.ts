@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeScores, POINTS_PER_CORRECT } from "../../app/src/lib/scoring.ts";
+import { computeScores, POINTS_PER_CORRECT, type RevealedPick } from "../../app/src/lib/scoring.ts";
 import type { ResultRecord, Tournament } from "../../app/src/lib/types.ts";
 
 const tournament: Tournament = {
@@ -42,7 +42,7 @@ describe("scoring", () => {
   });
 
   it("produces identical output across repeated runs (determinism)", () => {
-    const reveals = [
+    const reveals: RevealedPick[] = [
       { login: "bob", round: "r1", pick: { round: "r1", picks: { a: "X" } } },
       { login: "alice", round: "r1", pick: { round: "r1", picks: { a: "X", b: "Y" } } },
     ];
