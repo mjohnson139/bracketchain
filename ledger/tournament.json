@@ -78,6 +78,25 @@
           "BEL"
         ]
       }
+    },
+    {
+      "id": "sf",
+      "name": "Semi-finals",
+      "deadline": "2026-12-31T16:00:00Z",
+      "matchIds": [
+        "s1",
+        "s2"
+      ],
+      "matchTeams": {
+        "s1": [
+          "BRA",
+          "FRA"
+        ],
+        "s2": [
+          "ESP",
+          "NED"
+        ]
+      }
     }
   ]
 }

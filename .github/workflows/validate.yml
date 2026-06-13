@@ -1,9 +1,11 @@
 name: validate
 
-# Gates writes. Any pull request that adds or changes ledger records must pass
-# the full audit (signatures, schema, deadlines, commitment↔reveal hashes) plus
-# the unit suite before it can be merged. This never deploys.
+# Gates writes and proves the build. Runs on pull requests and on pushes to any
+# branch. Any change that adds or alters ledger records must pass the full audit
+# (signatures, schema, deadlines, commitment↔reveal hashes), the unit suite, the
+# determinism check, and the browser end-to-end flow. This never deploys.
 on:
+  push:
   pull_request:
   workflow_dispatch:
 
@@ -11,19 +13,17 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
-
       - run: npm ci
 
-      - name: Unit tests (crypto, merkle, scoring, determinism)
+      - name: Unit tests (crypto, merkle, scoring, determinism, verify flow)
         run: npm test
 
       - name: Typecheck
@@ -41,3 +41,19 @@ jobs:
             exit 1
           fi
           echo "State build is byte-identical across runs."
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end flow (join, preview commitment, verify proof in browser)
+        run: npm run e2e

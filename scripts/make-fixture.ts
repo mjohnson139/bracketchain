@@ -65,6 +65,19 @@ const tournament: Tournament = {
         q4: ["NED", "BEL"],
       },
     },
+    {
+      // An upcoming round with a future deadline: open for commitments, no
+      // picks or results yet. Lets new players exercise the full commit→reveal
+      // flow against a live deadline.
+      id: "sf",
+      name: "Semi-finals",
+      deadline: "2026-12-31T16:00:00Z",
+      matchIds: ["s1", "s2"],
+      matchTeams: {
+        s1: ["BRA", "FRA"],
+        s2: ["ESP", "NED"],
+      },
+    },
   ],
 };
 
@@ -129,6 +142,8 @@ async function main() {
     );
 
     for (const round of tournament.rounds) {
+      // Only rounds the player actually has picks for (skips upcoming rounds).
+      if (!playerPicks[login][round.id]) continue;
       const pick = { round: round.id, picks: playerPicks[login][round.id] };
       const salt = randomSalt();
       const commitment = await computeCommitment(pick, salt);
@@ -161,6 +176,7 @@ async function main() {
   }
 
   for (const round of tournament.rounds) {
+    if (!results[round.id]) continue; // upcoming rounds have no results yet
     const result: ResultRecord = {
       type: "result",
       round: round.id,
