@@ -1,0 +1,27 @@
+{
+  "type": "pick",
+  "round": "r16",
+  "login": "bob",
+  "publicKey": "BGQjosgy-_qJJMffCbHqvhqn63JZR04j8AeElZ5hzw_YxrQX1HM_khYxKbahRYrZzvidlKDhMlKT6M7RZTgN3po",
+  "commitment": "a9832757fa3188f698bfa76ad7f9f1d793cadb691167b30a9f03369ccd6c677e",
+  "commitTime": "2026-06-05T10:00:00Z",
+  "commitSignature": "Mo8hK-Gu43l_Or-JqB9vhWIMrvJ1g10j9zEFMcyxn8xMpFXRifAku_qFpbERhvZxeHT_7rCpZtaG9jrCpAw9nQ",
+  "reveal": {
+    "pick": {
+      "round": "r16",
+      "picks": {
+        "m1": "MEX",
+        "m2": "ARG",
+        "m3": "CRO",
+        "m4": "ENG",
+        "m5": "ESP",
+        "m6": "GER",
+        "m7": "USA",
+        "m8": "POR"
+      }
+    },
+    "salt": "EdcnBzEEBjV2QSthdlnJ3eJ3LmCFBxjUxdXUmEYXKTY",
+    "revealTime": "2026-06-06T10:00:00Z",
+    "signature": "lplXuxltykBHV5llOLBEdYP3DITTHjH4RwZUpVN6KxZlqNABIwWuHVUBehA49l47-Q7tLRzlbL37jPFPogMsBg"
+  }
+}

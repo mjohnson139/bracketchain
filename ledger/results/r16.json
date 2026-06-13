@@ -1,0 +1,15 @@
+{
+  "type": "result",
+  "round": "r16",
+  "matches": {
+    "m1": "BRA",
+    "m2": "ARG",
+    "m3": "FRA",
+    "m4": "ENG",
+    "m5": "ESP",
+    "m6": "GER",
+    "m7": "NED",
+    "m8": "POR"
+  },
+  "recordedAt": "2026-06-06T10:00:00Z"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "BracketChain Demo Cup 2026",
+  "rounds": [
+    {
+      "id": "r16",
+      "name": "Round of 16",
+      "deadline": "2026-06-05T16:00:00Z",
+      "matchIds": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8"
+      ]
+    },
+    {
+      "id": "qf",
+      "name": "Quarter-finals",
+      "deadline": "2026-06-10T16:00:00Z",
+      "matchIds": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ]
+    }
+  ]
+}

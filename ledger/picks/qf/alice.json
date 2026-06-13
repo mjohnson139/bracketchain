@@ -1,0 +1,23 @@
+{
+  "type": "pick",
+  "round": "qf",
+  "login": "alice",
+  "publicKey": "BJMaYCJ9n235jJrUhXsB9cHdwvmt5RrCf-XXBSJGqF3RYuxHR4vOy4qlKuZW7yiDZ4NMtX_u3R1eJlKksho8_XM",
+  "commitment": "00ea782f37ddc622bf2bb75dd480ad2df82a0bb795fde66bac5c8c4f70b4044a",
+  "commitTime": "2026-06-10T09:00:00Z",
+  "commitSignature": "PRr0wxltWLhjRIA5KzuiqRYjJbC6Cg-oCXd-OXPyIiY63jl6Pu-zwhoCQdd6LGn7qUP_yQtLg2_TuXrzp-vSDg",
+  "reveal": {
+    "pick": {
+      "round": "qf",
+      "picks": {
+        "q1": "BRA",
+        "q2": "FRA",
+        "q3": "ESP",
+        "q4": "NED"
+      }
+    },
+    "salt": "ETqUDly5UKBstTYQeot85DXEhrJsAa3VHGuxK3PCYYo",
+    "revealTime": "2026-06-11T09:00:00Z",
+    "signature": "-XF5iggwyRG97Yzhcq8bahR8nZVoZ9uDC3LHJSW0VsWAa9ikFlHDcHK4xC_INg5hhmGPnO_e_L-0raIV35rqAg"
+  }
+}

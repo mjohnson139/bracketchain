@@ -1,0 +1,23 @@
+{
+  "type": "pick",
+  "round": "qf",
+  "login": "bob",
+  "publicKey": "BGQjosgy-_qJJMffCbHqvhqn63JZR04j8AeElZ5hzw_YxrQX1HM_khYxKbahRYrZzvidlKDhMlKT6M7RZTgN3po",
+  "commitment": "479aed44e4fe7240ec6b77b9c30184d578b7160ea3f6d96d97b554737751a9b3",
+  "commitTime": "2026-06-10T09:00:00Z",
+  "commitSignature": "zF9jsoWExbzhcAs0MHytPB2vk5gjYUNMMTaSHW9Ju_J4KdHpyvlV6ewjgn4cX8QNj_Le98yeZtjc1ccStOi2cQ",
+  "reveal": {
+    "pick": {
+      "round": "qf",
+      "picks": {
+        "q1": "BRA",
+        "q2": "GER",
+        "q3": "ESP",
+        "q4": "BEL"
+      }
+    },
+    "salt": "gja-_AKnSblw06A-f_Z4Jdc4L56H0aYLhybjZW4Up1s",
+    "revealTime": "2026-06-11T09:00:00Z",
+    "signature": "bdO_0YN7SnsnXE0C1VC01isCLWZJPosBeORgAmCoP6yiS077nc5G6ao1rOM08wRocB0dd8tbbMJDo08b-NXz3A"
+  }
+}

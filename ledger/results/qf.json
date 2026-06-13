@@ -1,0 +1,11 @@
+{
+  "type": "result",
+  "round": "qf",
+  "matches": {
+    "q1": "BRA",
+    "q2": "FRA",
+    "q3": "ESP",
+    "q4": "NED"
+  },
+  "recordedAt": "2026-06-11T09:00:00Z"
+}
